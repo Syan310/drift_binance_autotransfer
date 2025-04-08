@@ -1,15 +1,15 @@
 # config.py
 
 # ========= Binance 主网配置 =========
-BINANCE_API_KEY = "your_binance_api_key_here"
-BINANCE_API_SECRET = "your_binance_api_secret_here"
+BINANCE_API_KEY = "q2erR5ciuKnZc94otVJ5j4j2p3CaLXxcfLw7tUmnTTIHnamfHLRnqROZp7E4difr"
+BINANCE_API_SECRET = "tjMOS26gkreSINOFnjL1fjzHvHIjaAtCKxOyGo3lbPw1dpkKw7Imml61RZtrkLml"
 
 BINANCE_TESTNET = False  # 设置为 False 使用主网
 BINANCE_USDC_ADDRESS = "your_binance_usdc_deposit_address"
 BINANCE_USDC_NETWORK = "SOL"  # 通常是 SOL、ERC20 或 TRC20，注意和提现地址网络匹配
 
 # ========= Solana 钱包（Drift 使用） =========
-SOLANA_KEYPAIR_PATH = "your_keypair_file.json"  # Drift 主网使用你的 Solana 钱包
+SOLANA_KEYPAIR_PATH = "wallet/drift_wallet.json"  # Drift 主网使用你的 Solana 钱包
 
 # ========= 自动转账设置 =========
 TRANSFER_AMOUNT = 10  # 每次转账的 USDC 数量，可根据需要调整

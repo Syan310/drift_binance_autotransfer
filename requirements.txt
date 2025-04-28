@@ -1,5 +1,5 @@
-python-binance
-driftpy
-solana
-anchorpy
-schedule
+aiohttp>=3.11,<4.0
+solana>=0.36.0,<0.37.0
+anchorpy>=0.21.0,<0.22.0    # 可选：Anchor 程序支持
+python-dotenv>=1.0.1,<2.0.0  # 可选：加载.env环境变量
+loguru>=0.7.3,<0.8.0         # 可选：更友好的日志输出

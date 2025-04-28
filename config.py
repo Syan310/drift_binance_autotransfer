@@ -1,21 +1,35 @@
 # config.py
 
-# ========= Binance 主网配置 =========
-BINANCE_API_KEY = "q2erR5ciuKnZc94otVJ5j4j2p3CaLXxcfLw7tUmnTTIHnamfHLRnqROZp7E4difr"
-BINANCE_API_SECRET = "tjMOS26gkreSINOFnjL1fjzHvHIjaAtCKxOyGo3lbPw1dpkKw7Imml61RZtrkLml"
+# Configuration for Binance and Drift monitoring program.
 
-BINANCE_TESTNET = False  # 设置为 False 使用主网
-BINANCE_USDC_ADDRESS = "your_binance_usdc_deposit_address"
-BINANCE_USDC_NETWORK = "SOL"  # 通常是 SOL、ERC20 或 TRC20，注意和提现地址网络匹配
+# Binance API credentials
+BINANCE_API_KEY = "your_binance_api_key"
+BINANCE_API_SECRET = "your_binance_api_secret"
 
-# ========= Solana 钱包（Drift 使用） =========
-SOLANA_KEYPAIR_PATH = "wallet/drift_wallet.json"  # Drift 主网使用你的 Solana 钱包
+# Drift configuration
+# Path to Solana keypair secret file for the Drift wallet (or provide key as needed).
+DRIFT_KEY_PATH = "path/to/your/solana/keypair.json"
+# Drift environment: e.g. 'mainnet' for mainnet, 'devnet' for devnet. Use 'mainnet' for production.
+DRIFT_ENV = "mainnet"
 
-# ========= 自动转账设置 =========
-TRANSFER_AMOUNT = 10  # 每次转账的 USDC 数量，可根据需要调整
+# Asset and network settings
+TRANSFER_ASSET = "USDC"
+# Amount of USDC to transfer for each operation (as a float or int of whole tokens)
+USDC_TRANSFER_AMOUNT = 100.0
 
-BINANCE_MARGIN_THRESHOLD = 1.1    # Binance 联合保证金率小于此值触发资金从 Drift → Binance
-DRIFT_HEALTH_THRESHOLD = 1.1      # Drift 健康度低于此值触发资金从 Binance → Drift
+# Target address for transfers (the wallet address to which Binance withdraws and from which Drift deposits).
+TARGET_ADDRESS = "your_wallet_address"
 
-# ========= 运行参数 =========
-CHECK_INTERVAL_SECONDS = 60  # 轮询周期（单位：秒），建议 60~300 秒之间
+# Network chain name for Binance withdrawals (e.g. 'SOL' for Solana network, 'ETH' for Ethereum, etc.)
+NETWORK = "SOL"
+
+# Thresholds for triggering transfers
+# If Binance margin ratio (in percentage) falls below this, it's considered under-utilized (safe).
+# If margin ratio is above this, the account is at risk (close to liquidation).
+MARGIN_RATIO_THRESHOLD = 150.0  # e.g. 150% (if margin ratio drops below this, funds can be safely withdrawn)
+# If Drift account health (ratio or percentage) falls below this, the account is at risk.
+# If health is above this, the account has excess collateral.
+HEALTH_THRESHOLD = 1.2  # e.g. 1.2 (120% health ratio)
+
+# Cooldown period (in seconds) to prevent frequent repetitive transfers
+COOLDOWN = 60
